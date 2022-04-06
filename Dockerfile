@@ -1,5 +1,7 @@
-FROM openjdk:10
-MAINTAINER "Veesam Ramyarjun <bellamkondasuresh994@gmail.com">
-EXPOSE 6060
-ADD target/docker-jenkins-integration-sample.war docker-jenkins-integration-sample.war
-ENTRYPOINT ["java","-jar","/docker-jenkins-integration-sample.war"]
+FROM ubuntu
+MAINTAINER suresh
+RUN apt-get update && apt-get install -y nginx
+LABEL "com.persistent.vendor"="MNC corported company"
+CMD ["nginx", "-g", "daemon off;"]
+COPY index.html /usr/www/html
+EXPOSE 80
